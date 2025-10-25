@@ -34,12 +34,9 @@ const props = defineProps(["menuData", "index"]);
 const router = useRouter();
 const store = useStore();
 
-
-
 const handleClick = (item, active) => {
     router.push(item.meta.path);
-    store.commit('addMenu', item.meta)
+    store.commit("addMenu", item.meta);
+    store.commit("updateMenuActive", active);
 };
-
-
 </script>

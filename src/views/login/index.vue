@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, toRaw } from "vue";
 import { getCode, userAuthentication, login, menuPermissions } from "../../api";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
@@ -199,8 +199,11 @@ const submitForm = async (formEL) => {
                         console.log(data, 'data')
                         store.commit('dynamicMenu', data.data)
                         console.log(routerList.value, 'routerList')
+                        toRaw(routerList.value).forEach(item=>{
+                            router.addRoute('main', item);
+                        })
+                        router.push('/');
                     })
-                    // router.push('/');
                 });
             }
         } else {

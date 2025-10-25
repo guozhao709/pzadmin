@@ -1,7 +1,11 @@
-const state = {
+const localData = JSON.parse(localStorage.getItem("pzadmin"));
+console.log(localData, "localData");
+
+const state = localData ? localData.menu : {
     isCollapse: true,
     selectMenu: [],
     routerList: [],
+    menuActive: '1-1'
 };
 
 const mutations = {
@@ -42,6 +46,9 @@ const mutations = {
         routerSet(payload);
         state.routerList = payload;
     },
+    updateMenuActive(state, payload) {
+        state.menuActive = payload;
+    }
 };
 
 export default {

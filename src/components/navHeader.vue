@@ -37,7 +37,7 @@
                     <el-avatar
                         src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
                     />
-                    <p class="user-name">admin</p>
+                    <p class="user-name">{{ userInfo.name }}</p>
                 </div>
                 <template #dropdown>
                     <el-dropdown-menu>
@@ -61,6 +61,8 @@ const route = useRoute();
 const router = useRouter();
 const store = useStore();
 const selectMenu = computed(() => store.state.menu.selectMenu);
+
+const userInfo = JSON.parse(localStorage.getItem('userInfo'))
 
 //------------------------------------------------------------------------------
 
@@ -99,6 +101,7 @@ const handleClick = (command) => {
     if (command === "cancel") {
         localStorage.removeItem("token");
         localStorage.removeItem("userInfo");
+        localStorage.removeItem("pzadmin");
         window.location.href = window.location.origin;
     }
 };

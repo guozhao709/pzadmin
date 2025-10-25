@@ -1,12 +1,9 @@
 <template>
     <div class="panel-heading">
         <div class="panel-lead">
-            <div class="title">title</div>
+            <div class="title">{{ props.route.meta.name }}</div>
             <p class="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-                esse praesentium, porro rem hic, quam sed ad laudantium
-                molestiae, tempora reiciendis error. Repellendus pariatur omnis
-                unde tenetur cupiditate, sunt corrupti.
+              {{ props.route.meta.describe }}
             </p>
         </div>
     </div>
@@ -14,6 +11,15 @@
 
 <script setup>
 // 逻辑代码
+
+const props = defineProps(
+    {
+        route: {
+            type: Object,
+        },
+    }
+)
+
 </script>
 
 <style scoped lang="less">

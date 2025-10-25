@@ -1,5 +1,5 @@
 <template>
-    <panel-head> </panel-head>
+    <PanelHead :route="route" />
 
     <div class="btns">
         <el-button :icon="Plus" type="primary" @click="open(null)" size="small"
@@ -78,6 +78,8 @@
 import { ref, reactive, onMounted } from "vue";
 import { userGetMenu, userSetMenu, menuList } from "../../../api";
 import { Plus } from "@element-plus/icons-vue";
+import PanelHead from "../../../components/panelHead.vue";
+import {useRoute} from "vue-router";
 
 // 挂载后请求数据
 onMounted(() => {
@@ -87,6 +89,8 @@ onMounted(() => {
     });
     getListData();
 });
+
+const route = useRoute();
 
 // 分页列表数据
 const paginationData = reactive({

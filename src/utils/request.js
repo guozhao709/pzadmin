@@ -39,6 +39,7 @@ http.interceptors.response.use(
         if (response.data.code === -2) {
             localStorage.removeItem("token");
             localStorage.removeItem("userInfo");
+            localStorage.removeItem("pzadmin");
             window.location.href = window.location.origin;
         }
 

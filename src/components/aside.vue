@@ -4,11 +4,11 @@
         active-text-color="#ffd04b"
         background-color="#545c64"
         class="aside-container"
-        default-active="2"
         text-color="#fff"
         @open="handleOpen"
         @close="handleClose"
         :collapse="isCollapse"
+        :default-active="active"
     >
         <p class="logo-lg">{{ isCollapse ? "DIDI" : "DIDI陪诊" }}</p>
         <TreeMenu :index="1" :menuData="menuData" />
@@ -23,13 +23,19 @@ import { useStore } from "vuex";
 
 const store = useStore();
 const router = useRouter();
-const menuData = reactive(router.options.routes[0].children);
+// const menuData = reactive(router.options.routes[0].children);
+const menuData = computed(() => store.state.menu.routerList);
+console.log(menuData.value, "menuData");
 
 const isCollapse = computed(() => store.state.menu.isCollapse);
 
 const handleOpen = () => {};
 
 const handleClose = () => {};
+
+const active = computed(() => {
+    store.state.menu.menuActive;
+});
 </script>
 
 <style lang="less" scoped>

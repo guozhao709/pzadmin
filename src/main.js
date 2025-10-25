@@ -5,6 +5,15 @@ import router from "./router";
 import store from "./store";
 import panelHead from "./components/panelHead.vue";
 
+// 刷新后动态路由的添加
+const localData = localStorage.getItem("pzadmin");
+if (localData) {
+    store.commit("dynamicMenu", JSON.parse(localData).menu.routerList);
+    store.state.menu.routerList.forEach(item =>{
+        router.addRoute('main', item);
+    })
+}
+
 router.beforeEach((to, from) => {
     const token = localStorage.getItem("token");
     // 非登录页面token不存在
