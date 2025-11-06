@@ -7,8 +7,6 @@ import Login from "../views/login/index.vue";
 // import Staff from "../views/vppz/staff/index.vue";
 // import Dashboard from "../views/dashboard/index.vue";
 
-const localData = JSON.parse(localStorage.getItem("pzadmin"));
-
 const router = createRouter({
     history: createWebHashHistory(),
     routes: [
@@ -17,6 +15,7 @@ const router = createRouter({
             path: "/",
             component: Layout,
             redirect: (to) => {
+                const localData = JSON.parse(localStorage.getItem("pzadmin"));
                 if (localData) {
                     const child = localData.menu.routerList[0].children;
                     if (child) {
@@ -25,7 +24,7 @@ const router = createRouter({
                         return localData.menu.routerList[0].meta.path;
                     }
                 } else {
-                    return "/";
+                    return "/login";
                 }
             },
             children: [

@@ -68,4 +68,19 @@ export const companionList = (params) => {
 // 陪护师删除
 export const deleteCompanion = (data) => {
     return request.post("/delete/companion", data);
-}
+};
+
+// 订单列表
+export const adminOrder = (params) => {
+    return request.get("/admin/order", { params });
+};
+
+// 完成服务订单
+export const updateOrder = (data) => {
+    return request.post("/update/order", data);
+};
+
+// 控制台接口
+export const getControlData = (params = {}) => {
+    return request.get("/report", { params });
+};
